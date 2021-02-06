@@ -31,6 +31,9 @@ db.mongoose.connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`
     process.exit()
 })
 
+require('./app/routes/auth.routes')(app)
+require('./app/routes/user.routes')(app)
+
 // let routing begin
 app.get('/', (req, res) => {
     res.json({ message: "Hi, welcome to Uğur's JWT service"})
