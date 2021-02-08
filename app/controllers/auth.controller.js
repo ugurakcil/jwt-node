@@ -2,7 +2,7 @@ const   config = require('../config/auth.config'),
         db = require('../models')
 
 const   User = db.user,
-        Role = db.Role
+        Role = db.role
 
 var jwt = require('jsonwebtoken'),
     bcrypt = require('bcryptjs')
@@ -94,12 +94,12 @@ exports.signin = (req, res) => {
 
         let authorities = []
 
-        for(let roleLoop = 0; roleLoop <= user.roles.length; roleLoop++) {
+        for(let roleLoop = 0; roleLoop < user.roles.length; roleLoop++) {
             authorities.push(`ROLE_${user.roles[roleLoop].name.toUpperCase()}`)
         }
 
         res.status(200).send({
-            id: user_id,
+            id: user.id,
             username: user.username,
             email: user.email,
             roles: authorities,

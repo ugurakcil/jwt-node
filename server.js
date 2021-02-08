@@ -19,8 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 const db = require('./app/models')
 const Role = db.role
-
-db.mongoose.connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+db.mongoose.connect(`mongodb://${dbConfig.USER}:${dbConfig.PASS}@${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.NAME}?authSource=admin`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {

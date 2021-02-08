@@ -16,6 +16,6 @@ module.exports = (app) => {
 
     app.get('/api/test/moderator', [authJwt.verifyToken, authJwt.isModerator], controller.moderatorBoard)
 
-    app.get('/api/test/admin', [authJwt.verifyToken, authJwt.isAdmin], controller.isAdmin)
+    app.get('/api/test/admin', [authJwt.verifyToken, authJwt.isAdmin], controller.adminBoard)
 }
 
